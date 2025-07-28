@@ -84,7 +84,7 @@ The changes will be propagated to the standby servers automatically
 
 #### Remarks:
 the public execute permission is absolutely necessary because the function will
-be invoked for every body / thing that is connected to the database.
+be invoked for everybody / everything that is connected to the database.
 
 Having public access granted to everybody might tempt people to execute the
 server\_promotion\_hook.on\_promote\_server(boolean) function at any time. But
