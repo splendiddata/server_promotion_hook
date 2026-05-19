@@ -22,6 +22,10 @@
 #include "utils/guc_tables.h"
 #include "utils/memutils.h"
 
+#if PG_VERSION_NUM >= 190000
+#include "utils/lsyscache.h"
+#endif
+
 #if PG_VERSION_NUM < 150000
 #error "Postgres version must be 15 or higher"
 #endif
@@ -252,7 +256,7 @@ PGDLLEXPORT Datum get_server_promotion_hook_version(PG_FUNCTION_ARGS)
 {
 	Datum server_promotion_hook_version = (Datum) palloc(
 	VARHDRSZ + strlen(version));
-	SET_VARSIZE(server_promotion_hook_version, VARHDRSZ + strlen(version));
-	memcpy(VARDATA(server_promotion_hook_version), version, strlen(version));
+	SET_VARSIZE(DatumGetPointer(server_promotion_hook_version), VARHDRSZ + strlen(version));
+	memcpy(VARDATA(DatumGetPointer(server_promotion_hook_version)), version, strlen(version));
 	PG_RETURN_DATUM(server_promotion_hook_version);
 }

@@ -14,6 +14,7 @@ now.
 ## Postgres versions
 The server\_promotion\_hook database extension works well in Postgres versions
 15, 16, 17 and 18.
+<p>Changes have been made to make it work on Postgres 19 as well. But as that Postgres version is not final yet, later changes may be needed.
 
 ## Installation
 First you'll need to compile the database extension (Check the
